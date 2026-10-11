@@ -2,6 +2,40 @@
 
 Lightweight, file-based development progress and evidence tracking for AI-assisted work. Python standard library only; no daemon, database, LLM API or automatic model routing. MIT licensed.
 
+## At a glance / 概要
+
+**Problem:** during context compaction, handoff or long-running AI development,
+an agent may forget progress or resume with a work state that differs from reality.
+**Approach:** persist development state, separating **AI-declared progress** from
+**machine-collected file hashes and test receipts**, then read compact status
+before resuming. The agent records material changes; the Hook does not save progress.
+
+**Environment and entry point:** tested on Windows/Python 3.14; optional Codex
+SessionStart adapter and Bionic integration guidance are included. Give your AI
+agent the [installation ZIP](https://github.com/OTONOTAMA/DEV-STATE/releases)
+and the setup request below. Let it handle setup and validation, with human
+action only for required choices or security/trust approval.
+
+**Limits:** saved state may be stale or incomplete. Identity, generation and
+evidence checks help detect mismatches, but do not guarantee correct task
+selection or perfect restoration. No automatic all-turn saving or execution authorization.
+For selected policies, preferences and facts, see the complementary
+[Codex Auxiliary Memory](https://github.com/OTONOTAMA/Codex-Auxiliary-Memory).
+
+**困りごと:** コンテキスト圧縮・ハンドオフ・長時間のAI開発で、AIが進捗を忘れたり、
+実際と異なる作業状態から再開したりすることがあります。
+**仕組み:** 開発状態を永続化し、**AIの進捗申告**と**マシンが取得したファイルhash・テスト証拠**を
+分離して、再開前に短いstatusを読みます。重要な変更を記録するのはAIで、Hookは保存しません。
+
+**環境と導入:** Windows/Python 3.14を検証対象とし、任意のCodex SessionStartアダプターと
+Bionic向け統合手順を含みます。AIへ[導入用ZIP](https://github.com/OTONOTAMA/DEV-STATE/releases)と
+下記の依頼を渡し、設置・検証を任せます。人間の操作は必要な選択やセキュリティ/信頼承認に限ります。
+
+**限界:** 保存状態が古い・不完全な場合があります。所有者・世代・証拠の照合は不一致の検出を
+助けますが、誤ったタスク選択や状態復元を完全には防ぎません。全ターン自動保存や実行許可の保存は行いません。
+選択したポリシー・好み・事実の保持には、相互補完する
+[Codex Auxiliary Memory](https://github.com/OTONOTAMA/Codex-Auxiliary-Memory)を利用できます。
+
 ## English
 
 ### What it does
@@ -12,7 +46,7 @@ It complements supplementary memory and checkpoints; it does not replace them. S
 
 ### Download and setup
 
-Download **DEV_STATE-v1.1.0.zip** from [Releases](https://github.com/OTONOTAMA/DEV-STATE/releases). The automatically generated source archives are for development. Check the ZIP against the supplied SHA256SUMS.txt, extract into a new folder, then verify the internal manifest:
+Give your AI agent **DEV_STATE-v1.1.0.zip** from [Releases](https://github.com/OTONOTAMA/DEV-STATE/releases) and the setup request below. Have it check SHA256SUMS.txt, extract into a new folder and verify the internal manifest. The automatically generated source archives are for development. The agent's verification command (also available for manual use) is:
 
 ```text
 python -B -X utf8 tools/release.py --verify
@@ -51,7 +85,7 @@ AIが開発を中断・再開するとき、「どこまで実装したか」を
 
 ### 導入方法
 
-[Releases](https://github.com/OTONOTAMA/DEV-STATE/releases) の **DEV_STATE-v1.1.0.zip** をダウンロードし、SHA256SUMS.txtで照合して新しいフォルダへ展開してください。自動生成の Source code ZIP は開発用です。確認済みのPC側Pythonで `python -B -X utf8 tools/release.py --verify` を実行すると、内部manifestと隔離テストを確認できます。pipの追加ライブラリは不要です。
+[Releases](https://github.com/OTONOTAMA/DEV-STATE/releases) の **DEV_STATE-v1.1.0.zip** と下記の依頼をAIへ渡し、SHA256SUMS.txt照合・新しいフォルダへの展開・内部manifest検証を任せてください。自動生成の Source code ZIP は開発用です。AIは確認済みのPC側Pythonで `python -B -X utf8 tools/release.py --verify` を実行し、内部manifestと隔離テストを確認します（手動実行も可能）。pipの追加ライブラリは不要です。
 
 AIへのセットアップ依頼例：
 
