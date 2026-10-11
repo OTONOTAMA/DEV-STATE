@@ -5,3 +5,7 @@ DEV_STATE/test-runs/
 DEV_STATE/codex-sessions/
 DEV_STATE/codex-adapter-g7/devstate-refresh-*/
 *.log
+
+# Target-local Hook/config; never ship trust or private machine settings.
+/.codex/hooks.json
+/.codex/config.toml

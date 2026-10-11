@@ -21,6 +21,7 @@ class RefreshTests(unittest.TestCase):
             prefix="devstate-refresh-", dir=Path(__file__).parent)
         self.addCleanup(self.tmp.cleanup)
         self.work = Path(self.tmp.name)
+        (self.work / '.git').mkdir()  # This fixture owns its project, not the enclosing source checkout.
         self.core = self.work / "DEV_STATE" / "dev-state-core" / "dev_state.py"
         self.core.parent.mkdir(parents=True)
         self.core.write_bytes(b"# fixture only\n")
@@ -108,7 +109,7 @@ class RefreshTests(unittest.TestCase):
 
     def test_core_absent(self):
         self.core.unlink()
-        (self.work / ".git").mkdir()
+        (self.work / ".git").mkdir(exist_ok=True)
         context, called = self.invoke()
         self.assertFalse(called)
         self.assertIn("CORE_ABSENT", context)

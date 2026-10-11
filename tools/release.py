@@ -13,10 +13,10 @@ import tempfile
 import zipfile
 
 ROOT = Path(__file__).resolve().parents[1]
-VERSION = "1.1.0"
+VERSION = "1.1.1"
 PREFIX = f"DEV_STATE-v{VERSION}"
 FILES = (
-    ".gitignore", "README.md", "LICENSE", "CHANGELOG.md", "INTEGRATION.md",
+    ".gitignore", ".gitattributes", "README.md", "LICENSE", "CHANGELOG.md", "INTEGRATION.md",
     "docs/VALIDATION.md", "docs/UNINSTALL.md", "tools/release.py",
     "DEV_STATE/dev-state-core/dev_state.py", "DEV_STATE/dev-state-core/dev-state.ps1",
     "DEV_STATE/dev-state-core/schemas/current-v1.schema.json",
@@ -73,6 +73,7 @@ def fixture_checks():
     env["PYTHONIOENCODING"] = "utf-8"
     with tempfile.TemporaryDirectory(prefix="release-probe-", dir=ROOT / "dist") as tmp:
         work = Path(tmp)
+        (work / '.git').mkdir()  # Isolate nearest-Git-root resolution from the build checkout.
         deployed = work / "DEV_STATE/dev-state-core/dev_state.py"
         deployed.parent.mkdir(parents=True)
         deployed.write_bytes(core.read_bytes())

@@ -14,9 +14,24 @@ It complements supplementary memory and checkpoints; it does not replace them. F
 
 ### Download and setup
 
+**Standard scope: PROJECT code/Hook, CHAT / SESSION state.** Common code is
+installed at the intended working/Git root; progress and evidence live in
+`DEV_STATE/codex-sessions/<session_id>/`. Project-local configuration limits its
+effects; shared code does not mean shared progress. Never adopt another session's
+state, even in the same project. Auxiliary Memory's project-shared facts are not
+this chat's development progress authority.
+
+Local files do not automatically share across people or PCs. Use one local writer
+environment and keep live state, receipts, logs and private settings out of
+Git/public uploads. Inspect access and tracked files: ignore rules do not untrack data.
+GLOBAL/user-wide integration is not shipped. Codex must assess feasibility,
+affected chats, ownership, duplicate Hooks and tests, then confirm intent/approval
+for nonstandard changes. Do not silently overwrite, migrate or mix existing
+Hooks/settings/memory/progress/trust. Agent preflight: [INTEGRATION.md](INTEGRATION.md).
+
 Setup and validation are agent-led; human action is needed only for required choices or security/trust approval.
 
-Give your AI agent **DEV_STATE-v1.1.0.zip** from [Releases](https://github.com/OTONOTAMA/DEV-STATE/releases) and the setup request below. Have it check SHA256SUMS.txt, extract into a new folder and verify the internal manifest. The automatically generated source archives are for development. The agent's verification command (also available for manual use) is:
+Give your AI agent **DEV_STATE-v1.1.1.zip** from [Releases](https://github.com/OTONOTAMA/DEV-STATE/releases) and the setup request below. Have it check SHA256SUMS.txt, extract into a new folder and verify the internal manifest. The automatically generated source archives are for development. The agent's verification command (also available for manual use) is:
 
 ```text
 python -B -X utf8 tools/release.py --verify
@@ -57,9 +72,21 @@ The release retains the existing portable v1.1 core and adapter unchanged. Runti
 
 ### 導入方法
 
+**標準はPROJECT内のコード/Hook、CHAT / SESSION別の状態です。** 共通機能は対象の
+working/Git rootへ配置し、進捗・証拠は`DEV_STATE/codex-sessions/<session_id>/`で分離します。
+設定の影響をプロジェクト内に限定する方式で、機能の共用は進捗の共有を意味しません。
+同じプロジェクトでも別チャットの状態を採用しません。Auxiliary Memoryの共有事実も、
+このチャットの進捗を確定する根拠とは別です。
+
+複数人・複数PCへの自動共有はありません。単一ローカル環境で書き込み、閲覧範囲とGit追跡対象を
+確認して実状態・receipts・ログ・固有設定の公開混入を防ぎます。ignoreは既存追跡を解除しません。
+GLOBAL/ユーザー全体の導入は同梱機能ではなく、Codexが対応可否・影響・所有・Hook重複・検証を
+検討し、意図と非標準変更の承認を確認します。既存Hook・設定・記憶・進捗・信頼を自動で
+上書き・移行・混合しません。AI向け事前確認は`INTEGRATION.md`。
+
 設置・検証はAIへ任せ、人間の操作は必要な選択やセキュリティ/信頼承認に限ります。
 
-[Releases](https://github.com/OTONOTAMA/DEV-STATE/releases) の **DEV_STATE-v1.1.0.zip** と下記の依頼をAIへ渡し、SHA256SUMS.txt照合・新しいフォルダへの展開・内部manifest検証を任せてください。自動生成の Source code ZIP は開発用です。AIは確認済みのPC側Pythonで `python -B -X utf8 tools/release.py --verify` を実行し、内部manifestと隔離テストを確認します（手動実行も可能）。pipの追加ライブラリは不要です。
+[Releases](https://github.com/OTONOTAMA/DEV-STATE/releases) の **DEV_STATE-v1.1.1.zip** と下記の依頼をAIへ渡し、SHA256SUMS.txt照合・新しいフォルダへの展開・内部manifest検証を任せてください。自動生成の Source code ZIP は開発用です。AIは確認済みのPC側Pythonで `python -B -X utf8 tools/release.py --verify` を実行し、内部manifestと隔離テストを確認します（手動実行も可能）。pipの追加ライブラリは不要です。
 
 AIへのセットアップ依頼例：
 

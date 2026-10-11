@@ -8,6 +8,40 @@ Keep installation local and small. No daemon, transcript parser, model routing, 
 
 ## 2. Preflight / integrity
 
+### Installation scope contract / 導入スコープ契約
+
+- Standard Codex setup = PROJECT-local code/Hook, CHAT / SESSION-owned state.
+  Resolve the intended working/Git root and exact current session identity from
+  current user intent and host evidence. If clear, proceed within standard setup
+  authorization without extra questions. Bionic keeps its chat-owned scratchpad route.
+- Installation location and data sharing are separate. Auxiliary Memory may
+  share project facts; never use its shared current task or another session's
+  DEV_STATE as this chat's progress/GO. Resume only the bound root/owner.
+- Inspect existing user/project/plugin Hooks, code, memory, state and trust;
+  preserve unrelated handlers and existing data. On conflicts, back up and plan
+  the smallest authorized integration, not a blanket overwrite/migration/merge.
+  Never forge/copy trust or duplicate a handler across config layers.
+- Before creating live state/specs/receipts or private config, inspect Git tracked
+  paths and establish appropriate local exclusions. Never stage personal data.
+  Ignore rules do not remove already-tracked files; report any existing leak for
+  explicit remediation. Package allowlists are not protection for arbitrary projects.
+- Local files do not automatically share across users/PCs. Review local read access;
+  use one local writer environment, not cloud-synchronized concurrent live state.
+- GLOBAL is not a shipped configuration. For nonstandard scope, assess feasibility,
+  affected chats, owner selection, duplicate Hooks, changes and test/rollback plan;
+  confirm user intent and authorization before changing user-wide settings.
+
+- Codex標準はPROJECT内のコード/HookとCHAT / SESSION別の状態。現在の意図と実機証拠で
+  working/Git rootとセッションIDを確定する。明確な標準導入は不要な再質問をしない。
+  Bionicはチャット固有scratchpadを維持する。
+- 配置と共有は別。Auxiliary Memoryの共有事実・共有タスクや別セッションの進捗/GOを流用しない。
+- user/project/pluginの既存Hook・コード・記憶・状態・信頼を確認し、無関係なものとデータを保持。
+  競合は保全して最小の承認済み統合で扱う。全体上書き・移行・混合・信頼偽造/コピー・二重登録をしない。
+- 実状態・spec・receipts・固有設定を作る前にGit追跡とローカル除外を確認し、個人情報をstageしない。
+  ignoreは既存追跡を解除しない。既存混入は無断削除せず対処を確認する。
+- ローカルファイルは複数人/複数PCへ自動共有されない。閲覧範囲を確認し、単一ローカル環境で書き込む。
+- GLOBALは同梱構成ではない。対応可否・影響・所有・重複・変更・検証/復元を検討し、意図と承認を確認する。
+
 1. Verify every file against `manifest.json` (SHA256 and byte count). `manifest.json` lists all other package files, not itself. The ZIP's externally supplied SHA256 protects the whole archive.
 2. Find the actual host Python executable. Windows/Python 3.14 was tested; another platform/interpreter needs local tests. No pip dependencies are required.
 3. Run tests from the extracted package root, with a verified interpreter: `python -B -X utf8 -m unittest discover -s DEV_STATE/dev-state-core/tests -v`.

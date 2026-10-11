@@ -9,6 +9,19 @@ sourceをhook_sourceへ保持し、指示込みadditionalContextを4096 UTF-8 by
 
 ## 導入
 
+標準はPROJECT内の共通機能とCHAT / SESSION別の状態。機能の設置先と進捗の共有範囲は別です。
+同じプロジェクトでも別チャットの進捗やAuxiliary Memoryの共有タスクを採用しません。
+GLOBAL導入は提供せず、非標準の変更には対応可否・影響・所有・重複・検証と意図/承認の確認が必要。
+複数人/複数PCでローカル状態が自動共有されるわけではありません。単一ローカル環境で書き込みます。
+導入前にINTEGRATION.mdの事前確認を読み、Git追跡/公開への実状態・receipts・個人情報・固有設定の
+混入を防ぎ、既存コード/Hook/記憶/進捗/信頼を勝手に上書き・移行・混合しません。
+対象と許可が明確な標準構成では、AIが不要な再質問なく導入・検証します。
+
+Standard = PROJECT-local common code/Hook, CHAT / SESSION-owned progress.
+Follow INTEGRATION.md preflight: no other-chat state adoption, no implicit GLOBAL
+setup or cross-PC/user sharing, no private data in Git, no unapproved overwrite,
+migration, mixing or trust changes. For clear standard setup, proceed autonomously.
+
 1. manifestのhashとbytesを確認する。Python標準ライブラリ以外の追加依存なし。
 2. このPCのホストPythonを確認する。Windows/Python 3.14が元環境の検証対象。
 3. 共通コアと本部品を `<working-root>/DEV_STATE/` に同梱構造どおり配置する。
