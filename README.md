@@ -2,49 +2,19 @@
 
 Lightweight, file-based development progress and evidence tracking for AI-assisted work. Python standard library only; no daemon, database, LLM API or automatic model routing. MIT licensed.
 
-## At a glance / 概要
-
-**Problem:** during context compaction, handoff or long-running AI development,
-an agent may forget progress or resume with a work state that differs from reality.
-**Approach:** persist development state, separating **AI-declared progress** from
-**machine-collected file hashes and test receipts**, then read compact status
-before resuming. The agent records material changes; the Hook does not save progress.
-
-**Environment and entry point:** tested on Windows/Python 3.14; optional Codex
-SessionStart adapter and Bionic integration guidance are included. Give your AI
-agent the [installation ZIP](https://github.com/OTONOTAMA/DEV-STATE/releases)
-and the setup request below. Let it handle setup and validation, with human
-action only for required choices or security/trust approval.
-
-**Limits:** saved state may be stale or incomplete. Identity, generation and
-evidence checks help detect mismatches, but do not guarantee correct task
-selection or perfect restoration. No automatic all-turn saving or execution authorization.
-For selected policies, preferences and facts, see the complementary
-[Codex Auxiliary Memory](https://github.com/OTONOTAMA/Codex-Auxiliary-Memory).
-
-**困りごと:** コンテキスト圧縮・ハンドオフ・長時間のAI開発で、AIが進捗を忘れたり、
-実際と異なる作業状態から再開したりすることがあります。
-**仕組み:** 開発状態を永続化し、**AIの進捗申告**と**マシンが取得したファイルhash・テスト証拠**を
-分離して、再開前に短いstatusを読みます。重要な変更を記録するのはAIで、Hookは保存しません。
-
-**環境と導入:** Windows/Python 3.14を検証対象とし、任意のCodex SessionStartアダプターと
-Bionic向け統合手順を含みます。AIへ[導入用ZIP](https://github.com/OTONOTAMA/DEV-STATE/releases)と
-下記の依頼を渡し、設置・検証を任せます。人間の操作は必要な選択やセキュリティ/信頼承認に限ります。
-
-**限界:** 保存状態が古い・不完全な場合があります。所有者・世代・証拠の照合は不一致の検出を
-助けますが、誤ったタスク選択や状態復元を完全には防ぎません。全ターン自動保存や実行許可の保存は行いません。
-選択したポリシー・好み・事実の保持には、相互補完する
-[Codex Auxiliary Memory](https://github.com/OTONOTAMA/Codex-Auxiliary-Memory)を利用できます。
+[English](#english) | [日本語](#日本語)
 
 ## English
 
 ### What it does
 
-DEV_STATE helps an AI resume interrupted development without repeatedly reconstructing what was done. It separates AI-declared progress from machine-collected hashes and test receipts. A read-only `status --compact` returns at most 4,096 UTF-8 bytes. State is bound to its root and owner; generation checks and OS writer locks reject conflicting updates.
+During context compaction, handoff or long-running AI development, an agent may forget progress or resume with a work state that differs from reality. DEV_STATE helps an AI resume interrupted development without repeatedly reconstructing what was done. It separates AI-declared progress from machine-collected hashes and test receipts. A read-only `status --compact` returns at most 4,096 UTF-8 bytes. State is bound to its root and owner; generation checks and OS writer locks reject conflicting updates.
 
-It complements supplementary memory and checkpoints; it does not replace them. Stored progress is never execution authorization. A passing command is evidence about that command, not proof that an entire development task is correct.
+It complements supplementary memory and checkpoints; it does not replace them. For selected policies, preferences and facts, see [Codex Auxiliary Memory](https://github.com/OTONOTAMA/Codex-Auxiliary-Memory). Stored progress is never execution authorization. A passing command is evidence about that command, not proof that an entire development task is correct.
 
 ### Download and setup
+
+Setup and validation are agent-led; human action is needed only for required choices or security/trust approval.
 
 Give your AI agent **DEV_STATE-v1.1.0.zip** from [Releases](https://github.com/OTONOTAMA/DEV-STATE/releases) and the setup request below. Have it check SHA256SUMS.txt, extract into a new folder and verify the internal manifest. The automatically generated source archives are for development. The agent's verification command (also available for manual use) is:
 
@@ -61,6 +31,8 @@ For an AI-assisted setup, give the extracted package to your AI with this instru
 Core operations work manually without a Skill or Hook. See [INTEGRATION.md](INTEGRATION.md) for exact CLI arguments, JSON templates and setup boundaries. Optional Codex setup is documented in [SETUP.md](DEV_STATE/codex-adapter-g7/SETUP.md). Bionic integration requires adapting its existing resume/checkpoint mechanism; a universal Bionic installer is not included.
 
 ### Package and safety
+
+Saved state may be stale or incomplete. Identity, generation and evidence checks help detect mismatches, but do not guarantee correct task selection or perfect restoration.
 
 - Common core, schemas, Windows launcher and isolated selftests.
 - Optional Codex SessionStart adapter, hook template and isolated adapter tests.
@@ -79,11 +51,13 @@ The release retains the existing portable v1.1 core and adapter unchanged. Runti
 
 ### 何をするもの？
 
-AIが開発を中断・再開するとき、「どこまで実装したか」を毎回調べ直す負担を減らす軽量ツールです。AIの進捗申告と、マシンが採取したファイルhash・テスト証拠を分けて保存します。通常の復旧は読み取り専用の `status --compact`（最大4,096 UTF-8バイト）から始めます。
+コンテキスト圧縮・ハンドオフ・長時間のAI開発では、AIが進捗を忘れたり、実際と異なる作業状態から再開したりすることがあります。DEV_STATEは、AIが開発を中断・再開するとき、「どこまで実装したか」を毎回調べ直す負担を減らす軽量ツールです。AIの進捗申告と、マシンが採取したファイルhash・テスト証拠を分けて保存します。通常の復旧は読み取り専用の `status --compact`（最大4,096 UTF-8バイト）から始めます。状態は保存先と所有者に結び付けられ、世代の照合とOSの書込みロックで競合する更新を拒否します。
 
-補助記憶・チェックポイントを置き換えるものではありません。保存された進捗は実行許可ではなく、テスト1件のPASSを開発全体の完了とは扱いません。
+補助記憶・チェックポイントを置き換えるものではありません。選択したポリシー・好み・事実の保持には、相互補完する[Codex Auxiliary Memory](https://github.com/OTONOTAMA/Codex-Auxiliary-Memory)を利用できます。保存された進捗は実行許可ではなく、テスト1件のPASSを開発全体の完了とは扱いません。
 
 ### 導入方法
+
+設置・検証はAIへ任せ、人間の操作は必要な選択やセキュリティ/信頼承認に限ります。
 
 [Releases](https://github.com/OTONOTAMA/DEV-STATE/releases) の **DEV_STATE-v1.1.0.zip** と下記の依頼をAIへ渡し、SHA256SUMS.txt照合・新しいフォルダへの展開・内部manifest検証を任せてください。自動生成の Source code ZIP は開発用です。AIは確認済みのPC側Pythonで `python -B -X utf8 tools/release.py --verify` を実行し、内部manifestと隔離テストを確認します（手動実行も可能）。pipの追加ライブラリは不要です。
 
@@ -95,8 +69,12 @@ Codex用の連携部品は任意です。Bionicでは既存の復旧手順に合
 
 ### 大事な制約
 
+保存状態が古い・不完全な場合があります。所有者・世代・証拠の照合は不一致の検出を助けますが、誤ったタスク選択や状態復元を完全には防ぎません。
+
 個人の進捗・receipts・過去ログ・認証情報・固有設定・Hookの信頼情報は入っていません。`verify` は指定コマンドを実行するため、実行前に内容と許可を確認してください。子プロセス全体を封じ込めるサンドボックスではありません。
 
 Hookは読み取り専用です。圧縮後にAIへ更新確認を促しても、全作業を自動保存したり最新進捗を保証したりはしません。Windows/Python 3.14を検証対象とし、別PC・別クライアントの実発火と信頼登録は各環境で確認が必要です。停電時の永続性やクラウド同期越しの複数PC同時更新は保証しません。
+
+### 保守・ライセンス
 
 MITライセンスです。既存のportable v1.1からコアとアダプターの動作は変更していません。保守方法・検証範囲・安全な撤去方法は `docs/` を参照してください。
