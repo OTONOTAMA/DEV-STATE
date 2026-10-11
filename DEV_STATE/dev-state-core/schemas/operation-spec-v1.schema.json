@@ -1,0 +1,9 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "$id": "dev-state/operation-spec-v1",
+  "title": "DEV_STATE operation specifications v1",
+  "type": "object",
+  "additionalProperties": false,
+  "required": ["spec_version"],
+  "description": "Operation-specific required keys and safety constraints are enforced by dev_state.py."
+}

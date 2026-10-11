@@ -1,0 +1,10 @@
+{
+  "spec_version": "1.0",
+  "phase": "implementation",
+  "active_item_id": "first-item",
+  "next_action": "Complete the first bounded development item.",
+  "artifact_roots": ["<ABSOLUTE_ARTIFACT_DIRECTORY>"],
+  "items": [{"item_id":"first-item","summary":"First development item","progress":"IN_PROGRESS","basis":"AI_DECLARED"}],
+  "unresolved": [],
+  "authority_declarations": []
+}

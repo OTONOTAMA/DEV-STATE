@@ -1,0 +1,9 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "$id": "dev-state/receipt-v1",
+  "title": "DEV_STATE immutable machine receipt v1",
+  "type": "object",
+  "additionalProperties": false,
+  "required": ["receipt_schema_version", "receipt_id", "task_id", "item_id", "producer", "verification_surface", "command_or_test_id", "argv", "cwd", "started_at", "finished_at", "exit_code", "result", "artifact_fingerprints", "stdout", "stderr", "acceptance"],
+  "description": "Descriptive schema companion. Runtime validation is implemented by dev_state.py."
+}

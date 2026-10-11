@@ -1,0 +1,11 @@
+{
+  "spec_version": "1.0",
+  "item_id": "first-item",
+  "verification_surface": "COMMAND_EXIT_AND_ARTIFACTS",
+  "command_or_test_id": "item-test",
+  "argv": ["<ABSOLUTE_PYTHON>","-X","utf8","<ABSOLUTE_AUTHORIZED_TEST_SCRIPT>"],
+  "cwd": "<ABSOLUTE_ARTIFACT_DIRECTORY>",
+  "timeout_seconds": 60,
+  "success_exit_codes": [0],
+  "required_artifacts": []
+}

@@ -1,0 +1,5 @@
+{
+  "spec_version": "1.0",
+  "set": {"phase":"implementation","active_item_id":null,"next_action":"Review evidence and select the next item."},
+  "upsert_items": [{"item_id":"first-item","summary":"First development item completed; semantic judgment remains AI_DECLARED.","progress":"DONE","basis":"AI_DECLARED"}]
+}

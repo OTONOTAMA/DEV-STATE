@@ -1,0 +1,6 @@
+{
+  "spec_version": "1.0",
+  "item_id": "first-item",
+  "artifacts": [{"artifact_id":"result","path":"<ABSOLUTE_ARTIFACT_FILE>","role":"development-result"}],
+  "authority_ids": []
+}

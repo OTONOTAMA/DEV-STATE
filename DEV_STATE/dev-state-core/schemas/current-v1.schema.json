@@ -1,0 +1,9 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "$id": "dev-state/current-v1",
+  "title": "DEV_STATE current state v1",
+  "type": "object",
+  "additionalProperties": false,
+  "required": ["schema_version", "task_id", "owner_context", "generation", "created_at", "updated_at", "phase", "active_item_id", "next_action", "artifact_roots", "items", "unresolved", "authority_refs", "diagnostics"],
+  "description": "Descriptive schema companion. Runtime validation is implemented by dev_state.py."
+}

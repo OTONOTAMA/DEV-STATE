@@ -1,0 +1,18 @@
+{
+  "hooks": {
+    "SessionStart": [
+      {
+        "matcher": "^(startup|resume|compact)$",
+        "hooks": [
+          {
+            "type": "command",
+            "command": "\"<ABSOLUTE_PYTHON>\" -X utf8 \"<ABSOLUTE_ADAPTER_SCRIPT>\"",
+            "commandWindows": "\"<ABSOLUTE_PYTHON>\" -X utf8 \"<ABSOLUTE_ADAPTER_SCRIPT>\"",
+            "timeout": 7,
+            "statusMessage": "Loading compact DEV_STATE"
+          }
+        ]
+      }
+    ]
+  }
+}
