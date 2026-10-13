@@ -106,6 +106,10 @@ Ask the user to review/trust the new exact Hook definition through the host's Ho
 
 ## 5. Bionic setup
 
+Concrete, source-only examples: [examples/bionic/README.md](examples/bionic/README.md).
+They supplement this contract; they are not a universal installer and are not
+contained in the existing v1.1.1 Release ZIP.
+
 Deploy only shared code at `<task-root>/tools/dev-state-core/` (core, schemas, launcher; tests may be retained for maintenance). Never put a chat's operation specs or state into the shared workspace.
 
 State belongs to `<current-chat-scratchpad>/dev-state/<task-id>/`. Set task_id and context_key to that validated final component. Initialize a NEW state in the current chat's scratchpad. Do not copy another chat's state or reuse a different scratchpad.

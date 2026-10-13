@@ -45,6 +45,11 @@ For an AI-assisted setup, give the extracted package to your AI with this instru
 
 Core operations work manually without a Skill or Hook. See [INTEGRATION.md](INTEGRATION.md) for exact CLI arguments, JSON templates and setup boundaries. Optional Codex setup is documented in [SETUP.md](DEV_STATE/codex-adapter-g7/SETUP.md). Bionic integration requires adapting its existing resume/checkpoint mechanism; a universal Bionic installer is not included.
 
+For a concrete, source-only Bionic integration reference, see
+[examples/bionic](examples/bionic/README.md). It adapts an existing resume Skill,
+checkpoint pointer validation and update rules without replacing host policies.
+These examples are not included in the existing v1.1.1 Release ZIP.
+
 ### Package and safety
 
 Saved state may be stale or incomplete. Identity, generation and evidence checks help detect mismatches, but do not guarantee correct task selection or perfect restoration.
@@ -93,6 +98,10 @@ AIへのセットアップ依頼例：
 > README.mdとINTEGRATION.mdを読み、このチャット専用の新しい状態としてセットアップして。既存のSkill・Hook・checkpoint・認可ルールを保持し、manifest照合・同梱の隔離試験・手動statusを確認して。他人や別チャットの状態は採用しない。許可された範囲だけ連携設定し、必要な信頼登録を案内して。実際のHook発火は観測するまで未確認扱いにして。
 
 Codex用の連携部品は任意です。Bionicでは既存の復旧手順に合わせた統合が必要で、汎用の自動インストーラーはありません。HookやSkillなしでも共通コアを手動で利用できます。
+
+具体的なBionic連携の参考例は [examples/bionic](examples/bionic/README.md)
+（英語）を参照してください。既存復旧Skill・checkpoint検査・更新規律への
+組込み例です。環境のpolicyを置換せず、既存v1.1.1 Release ZIPには含まれません。
 
 ### 大事な制約
 
